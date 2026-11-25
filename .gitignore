@@ -1,0 +1,47 @@
+# ============================================
+# GoCachy — .gitignore
+# ============================================
+
+# ── Secrets — NUNCA subir ──
+.env
+.env.local
+.env.production
+.env.development
+
+# ── Node.js ──
+node_modules/
+dist/
+build/
+.vite/
+
+# ── React Native ──
+.expo/
+ios/
+android/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# ── Go ──
+backend-go/server
+backend-go/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# ── Docker ──
+*.log
+
+# ── Editor ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS ──
+.DS_Store
+Thumbs.db

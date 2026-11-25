@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./backend-go
+      dockerfile: Dockerfile
+    container_name: gocachy-backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./backend-go/configs/.env    # ← RUTA CORREGIDA
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./React
+      dockerfile: Dockerfile
+    container_name: gocachy-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
