@@ -16,11 +16,7 @@ Red social desarrollada como proyecto de portafolio profesional.
 
 ## Funcionalidades
 
-- Registro y login con autenticación JWT
-- Perfiles de usuario
-- Términos y condiciones (Ley 19.628)
-- Animaciones personalizadas
-- Diseño responsive
+- Registro
 
 ## Instalación
 
