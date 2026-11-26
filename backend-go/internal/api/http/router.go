@@ -14,11 +14,11 @@ type Deps struct {
 func NewRouter(d Deps) *gin.Engine {
 	r := gin.Default()
 
-	// CORS (para que React en el navegador pueda llamar)
+	// CORS
 	r.Use(func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Origin", "http://localhost:5173")
+		c.Header("Access-Control-Allow-Origin", "*")
 		c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-		c.Header("Access-Control-Allow-Headers", "Content-Type")
+		c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization")
 		c.Header("Access-Control-Allow-Credentials", "true")
 
 		if c.Request.Method == "OPTIONS" {
@@ -35,12 +35,10 @@ func NewRouter(d Deps) *gin.Engine {
 
 	api := r.Group("/api")
 	{
-		// Públicas
 		api.POST("/auth/register", d.Auth.Register)
 		api.POST("/auth/login", d.Auth.Login)
 		api.POST("/auth/logout", d.Auth.Logout)
 
-		// Protegidas (requieren JWT)
 		auth := api.Group("", RequireAuth(d.Tokens))
 		{
 			auth.GET("/profile", d.Auth.GetProfile)
